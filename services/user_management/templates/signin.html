@@ -67,9 +67,9 @@
                     <h1 class="title">Sign in to ATHLEATX</h1>
                     <p class="welcome-lead" style="color: black;">Welcome back! Please enter your details.</p>
                 <p class="welcome-bottom" style="color: black; text-align: center;">Don't have an account?
-		<a class="text-primary" href="/register">Sign up</a></p>
+		<a class="text-primary" href="/user/register">Sign up</a></p>
                 </div>
-                <form class="welcome-form" action="/login" method="POST">
+                <form class="welcome-form" action="/user/login" method="POST">
                     {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                     {% for category, message in messages %}
@@ -101,11 +101,6 @@
                         <i class="input-icon fa-solid fa-lock"></i>
                     </div>
                     <button class="btn btn-primary" type="submit">Sign in</button>
-                </form>
-                <form class="welcome-form" method="POST">
-                    <button class="btn btn-tertiary" name="demo_user" type="submit">
-                        Sign in with Demo User
-                    </button>
                 </form>
         </div>
     </div>
