@@ -86,7 +86,7 @@ def login():
 @user_bp.route("/logout", methods=["GET"])
 def logout():
     session.pop('user_email', None)  # Remove user email from session
-    return redirect(url_for("user.login"))
+    return redirect(url_for("init"))
 
 @user_bp.route("/home", methods=["GET"])
 def home():

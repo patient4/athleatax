@@ -24,7 +24,7 @@ if __name__ == "__main__":
     app = create_app()
     @app.route('/')
     def init():
-        return render_template("init_home.html")
+        return render_template("init_home.html", user={})
     # Ensure database tables are created before running the app
     with app.app_context():
         db.create_all()
