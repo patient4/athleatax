@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, request, jsonify, render_template, url_for
+from flask import Blueprint, redirect, request, jsonify, render_template, url_for, session
 from app import db
 import pdb
 from sqlalchemy.exc import SQLAlchemyError
@@ -16,7 +16,7 @@ class User(db.Model):
         self.email = email
         self.password = password
 
-user_bp = Blueprint("user", __name__, url_prefix="/user", template_folder="templates", static_folder="static")
+user_bp = Blueprint("user", __name__, url_prefix="/user", template_folder="templates", static_folder="static")  
 
 @user_bp.route("/register", methods=["POST", "GET"])
 def register():
@@ -67,17 +67,42 @@ def login():
 
         # Validate required fields
         if not email or not password:
-            return jsonify({"error": "All fields are required"}), 400
+            return render_template("signin.html", message="All fields are required")
 
         # Fetch the user from the database
         user = User.query.filter_by(email=email).first()
 
         if user and check_password_hash(user.password, password):
-            return jsonify({"success": "user logged in successfully"}), 200
+            session['user_email'] = user.email
+            session['id'] = user.id  # Save user email in session and id
+            return redirect(url_for("user.home"))
         else:
-            return jsonify({"error": "Invalid email or password"}), 401
+            return render_template("signin.html", message="Invalid email or password")
 
     except Exception as e:
         print(e)
         return jsonify({"error": str(e)}), 500
+
+@user_bp.route("/logout", methods=["GET"])
+def logout():
+    session.pop('user_email', None)  # Remove user email from session
+    return redirect(url_for("user.login"))
+
+@user_bp.route("/home", methods=["GET"])
+def home():
+    user_email = session.get('user_email')
+    if not user_email:
+        return redirect(url_for("user.login"))  # Redirect to login if not logged in
+
+    user = User.query.filter_by(email=user_email).first()
+    return render_template("home.html", user=user)
+
+@user_bp.route("/profile", methods=["GET"])
+def profile():
+    user_email = session.get('user_email')
+    if not user_email:
+        return redirect(url_for(".login"))  # Redirect to login if not logged in
+    user = User.query.filter_by(email=user_email).first()
+    return render_template("profile.html", user=user)
+
 
