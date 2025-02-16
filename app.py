@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, request, redirect, url_for, flash
 from app import db
 
 def create_app():
@@ -24,12 +24,21 @@ if __name__ == "__main__":
     app = create_app()
 
     @app.route('/')
-    def init():
-        # Mock user object for demonstration purposes
-        user = {
-            'workouts': []
-        }
-        return render_template("signin.html", user=user)
+    def home():
+        return render_template('init_home.html')
+
+    @app.route('/contact')
+    def contact():
+        return render_template('contact.html')
+
+    @app.route('/send_message', methods=['POST'])
+    def send_message():
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        # Handle sending message (e.g., save to database, send email, etc.)
+        flash('Your message has been sent successfully!', 'success')
+        return redirect(url_for('contact'))
 
     # Ensure database tables are created before running the app
     with app.app_context():
