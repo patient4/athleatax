@@ -5,16 +5,16 @@
         <a class="nav-link active" href="/">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/">About</a>
+        <a class="nav-link active" href="/about.html">About</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/">Hours</a>
+        <a class="nav-link active" href="/hours.html">Hours</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/">Workout</a>
+        <a class="nav-link active" href="/workout.html">Workout</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/workout">Contact Us</a>
+        <a class="nav-link active" href="/contact">Contact Us</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,50 +32,45 @@
     <div class="cover">
         <div class="cover-content">
             <style>
-.slider-container {
-    position: relative;
-    max-width: 1000px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-    min-width: 100%;
-    box-sizing: border-box;
-}
-
-.slide img {
-    width: 100%;
-    vertical-align: middle;
-}
-
-.slider-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-
-.prev, .next {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 20px;
-    font-size: 18px;
-    border-radius: 50%;
-    user-select: none;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+                .slider-container {
+                    position: relative;
+                    max-width: 1000px;
+                    margin: auto;
+                    overflow: hidden;
+                    background-color: #f0f0f0; /* Change the background color here */
+                }
+                .slider {
+                    display: flex;
+                    transition: transform 0.5s ease-in-out;
+                }
+                .slide {
+                    min-width: 100%;
+                    box-sizing: border-box;
+                }
+                .slide img {
+                    width: 100%;
+                    vertical-align: middle;
+                }
+                .slider-nav {
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    transform: translateY(-50%);
+                }
+                .prev, .next {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    padding: 20px;
+                    font-size: 18px;
+                    border-radius: 50%;
+                    user-select: none;
+                }
+                .prev:hover, .next:hover {
+                    background-color: rgba(0, 0, 0, 0.8);
+                }
                 .cover {
                     width: 100%;
                     height: 80%;
@@ -99,6 +94,8 @@
             </style>
             <h1 class="title; font-family:verdana; color:#000000;">ATHLEATX Fitness and Gym 24X7</h1>
             <p class="cover-lead" style="color: White;">Find Your Strength</p>
+            <!-- Add Button to Payment Page -->
+            <a class="btn btn-primary" href="/services/admin/templates/payment_page.html" role="button">Make a Payment</a>
         </div>
     </div>
 
@@ -106,36 +103,35 @@
     <section id="about" style="padding: 120px 0; background-color: #D3D3D3;">
         <div class="container">
             <h1 style="font-size: 36px; font-family: 'Montserrat', sans-serif; color: #D2042D;">About Us</h1>
-	    <br>
-	    <br>
-            <p style="font-size: 20px; font-family: 'Century Gothic', serif; color: #D2042D;">Welcome to ATHLEATX Fitness and Gym 24X7, where we believe in finding your strength and achieving your fitness goals. <br><br> Offering the opportunity to stay healthy to people from all walks of life, Athleatx offers avant-garde equipment and the latest fitness trends to keep you motivated, no matter your level of fitness.<br><br> Our state-of-the-art facility is open 24/7 to accommodate your busy schedule. Our experienced trainers and staff are here to support and guide you on your fitness journey.</p>
+            <br>
+            <br>
+            <p style="font-size: 20px; font-family: 'Century Gothic', serif; color: #D2042D;">Welcome to ATHLEATX Fitness and Gym 24X7, where we believe in finding your strength and achieving your fitness goals. Our state-of-the-art facilities and expert trainers are here to support you every step of the way.</p>
         </div>
     </section>
 
-<!-- Image Slider Section -->
-<section id="slider" style="padding: 50px; background-color: #D2042D;">
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slide">
-                <img src="/static/images/one.jpg" alt="Slide 1">
+    <!-- Image Slider Section -->
+    <section id="slider" style="padding: 50px; background-color: #D2042D;">
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <img src="/static/images/one.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="/static/images/two.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="/static/images/three.jpg" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="/static/images/four.jpg" alt="Slide 4">
+                </div>
             </div>
-            <div class="slide">
-                <img src="/static/images/two.jpg" alt="Slide 2">
-            </div>
-            <div class="slide">
-                <img src="/static/images/three.jpg" alt="Slide 3">
-            </div>
-            <div class="slide">
-                <img src="/static/images/four.jpg" alt="Slide 4">
+            <div class="slider-nav">
+                <span class="prev" onclick="plusSlides(-1)">&#10094;</span>
+                <span class="next" onclick="plusSlides(1)">&#10095;</span>
             </div>
         </div>
-        <div class="slider-nav">
-            <span class="prev" onclick="plusSlides(-1)">&#10094;</span>
-            <span class="next" onclick="plusSlides(1)">&#10095;</span>
-        </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Another Picture -->
     <div class="cover" style="background-image: url('/static/images/another-picture.jpg'); height: 60%;">
@@ -225,13 +221,16 @@
                 <a class="btn btn-secondary" href="/new-workout" role="button">Add workout</a>
             </div>
         </div>
+    {% endif %}
+{% endblock %}
 
+{% block scripts %}
 <script>
     let slideIndex = 0;
 
     function showSlides() {
         const slides = document.querySelectorAll('.slide');
-        const slider = document.querySelector('.slider');
+        const slider = document.querySelector('#slider');
         
         slider.style.transform = `translateX(-${slideIndex * 100}%)`;
     }
@@ -250,6 +249,4 @@
         showSlides();
     });
 </script>
-
-    {% endif %}
 {% endblock %}
